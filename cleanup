@@ -1,0 +1,2 @@
+#!/bin/sh
+rm -rf src/Makevars src/config.h config.log config.status LICENSE

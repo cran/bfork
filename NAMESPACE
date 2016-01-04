@@ -1,0 +1,5 @@
+useDynLib(bfork)
+exportPattern("^[[:alpha:]]+")
+export(fork)
+export(wait)
+export(waitall)
