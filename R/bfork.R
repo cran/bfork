@@ -5,10 +5,10 @@ fork <- function(fn) {
     .Call("bfork_fork", PACKAGE = "bfork", fn)
 }
 
-wait <- function(child_pid) {
+waitpid <- function(child_pid) {
     .Call("bfork_wait", PACKAGE = "bfork", child_pid)
 }
 
-waitall <- function() {
+wait <- function() {
     .Call("bfork_waitall", PACKAGE = "bfork");
 }

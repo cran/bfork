@@ -2,7 +2,7 @@
 R library for spawning and managing multiple processes (**b**asic process **fork**ing for
 R). A paper thin wrapper around `fork()` and `waitpid()`.
 
-The package consists of three major functions `fork`, `wait`, and `waitall`.
+The package consists of three major functions `fork`, `wait`, and `waitpid`.
 
 ### Example 1
 ```r
@@ -27,7 +27,7 @@ The package consists of three major functions `fork`, `wait`, and `waitall`.
     }
     
     # wait for all processes to finish
-    waitall()
+    wait()
 
     endtime <- Sys.time()
 
@@ -58,8 +58,8 @@ The package consists of three major functions `fork`, `wait`, and `waitall`.
     pid2 = fork(fn1)
 
     # wait for both functions to finish
-    pid1 = wait(pid1)
-    pid2 = wait(pid2)
+    pid1 = waitpid(pid1)
+    pid2 = waitpid(pid2)
     # Output:
     #   Hello
     #   Multiple

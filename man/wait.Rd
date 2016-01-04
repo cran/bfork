@@ -1,34 +1,45 @@
 \name{wait}
 \alias{wait}
-\title{Wait for a pid to finish}
+\title{Wait for all children processes to finish}
 \description{
-    Halts execution until the process identified by the pid given as\cr
-    an argument terminates.
+    Halts execution until all child processes terminate.
 }
 \usage{
-    wait(child_pid)
-}
-\arguments{
-    \item{child_pid}{the pid of the child process to wait for}
+    wait()
 }
 \seealso{
     \code{\link{fork}}.\cr
-    \code{\link{waitall}}.
+    \code{\link{waitpid}}.
 }
 \examples{
-    ## create a function to be run as a separate process
+    ## destination for plots
+    dest <- "/path/to/dest/"
+
+    ## example function to be forked
     fn <- function() {
-        Sys.sleep(4)
-        print("World!")
+        Sys.sleep(1) # simulate some work
+        img_name <- paste("child", i, sep="-")
+        png(paste(dest, img_name, ".png", sep=""))
+        plot(0,0, xlim=c(0,2), ylim=c(0,2), type="n")
+        text(1,1, paste("Child [", i, "]: Hello, World!", sep=""))
+        dev.off()
     }
+    
+    starttime <- Sys.time()
 
-    ## fork the process
-    pid <- fork(fn)
+    ## fork the child processes
+    for(i in 1:10) {
+        fork(fn)
+    }
+    
+    ## wait for all processes to finish
+    wait()
 
-    ## do work in the parent process
-    print("Hello")
+    endtime <- Sys.time()
 
-    ## wait for the child process
-    wait(pid)
+    print(paste("Total time taken to run 10 1s processes: ",
+                round(endtime - starttime, 2), "s", sep=""))
+    ## Output: (Time taken may vary)
+    ##   Total time taken to run 10 1s processes: 1.68s
 }
 \keyword{file}

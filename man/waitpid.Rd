@@ -1,19 +1,19 @@
-\name{fork}
-\alias{fork}
-\title{Fork a new process}
+\name{waitpid}
+\alias{waitpid}
+\title{Wait for a pid to finish}
 \description{
-  Create a new process given a function.
+    Halts execution until the process identified by the pid given as\cr
+    an argument terminates.
 }
 \usage{
-    fork(fn)
+    waitpid(child_pid)
 }
 \arguments{
-    \item{fn}{a function that takes no arguments and returns no arguments
-              that will be run in a new process}
+    \item{child_pid}{the pid of the child process to wait for}
 }
 \seealso{
-    \code{\link{wait}}.\cr
-    \code{\link{waitpid}}.
+    \code{\link{fork}}.\cr
+    \code{\link{wait}}.
 }
 \examples{
     ## create a function to be run as a separate process

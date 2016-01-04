@@ -5,7 +5,7 @@ fn <- function() {
 
 writedf <- data.frame(a=c(1,2,3,4), b=1,2,3,4)
 cpid <- fork(fn)
-rpid <- wait(cpid)
+rpid <- waitpid(cpid)
 
 test_that("forked pid equals returned pid", {
           expect_equal(cpid, rpid)

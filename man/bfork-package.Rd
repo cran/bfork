@@ -1,7 +1,7 @@
 \docType{package}
 \name{bfork}
 \alias{bfork-package}
-\title{bfork: a paper thin wrapper of fork/waitpid for R}
+\title{bfork: wrappers for fork()/waitpid()}
 \description{
     bfork provides a simple method for spawning and managing multiple processes.
 }
@@ -9,5 +9,5 @@
 \seealso{
     \code{\link{fork}}.\cr
     \code{\link{wait}}.\cr
-    \code{\link{waitall}}.
+    \code{\link{waitpid}}.
 }
